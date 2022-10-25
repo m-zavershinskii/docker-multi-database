@@ -9,12 +9,6 @@ services:
     network_mode: host
     image: mysql:8.0-debian
     volumes:
-      - type: bind
-        source: ./${dbname}/data/
-        target: /var/lib/mysql/
-      - type: bind
-        source: ./${dbname}/my.cnf
-        target: /etc/mysql/my.cnf:ro
-      - type: bind
-        source: ./${dbname}/log
-        target: /var/log/mysql
+      - ./${dbname}/data/:/var/lib/mysql/
+      - ./${dbname}/my.cnf:/etc/mysql/my.cnf:ro
+      - ./${dbname}/log/:/var/log/mysql/
